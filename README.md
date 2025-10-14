@@ -1,5 +1,6 @@
 # TP2
-[recording.webm](https://github.com/user-attachments/assets/ee85c2e6-e2d6-4360-aa28-72f8fcce6720)
+[recording (1).webm](https://github.com/user-attachments/assets/4c3c5892-0468-4e70-aa9e-410f48c4b9aa)
+
 ## Consigna
 
 Actividad:
