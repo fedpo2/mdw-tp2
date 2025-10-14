@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./Alumno.css"
+import type { Usuario } from "../types/usuario";
 
-export default function Alumno({data}: {data: any}){
+export default function Alumno({data}: {data: Usuario}){
     const [alumno, setAlumno] = useState({ presente: false });
     return (
         <div id="aa"
@@ -22,8 +23,13 @@ export default function Alumno({data}: {data: any}){
                 <p>
                     Nombre: <b>{data.name}</b>
                 </p>
-                <p>
+
+                <p style={{ color: "gray" }}>
                     Usuario: <b>{data.username}</b>
+                </p>
+
+                <p style={{ color: "gray" }}>
+                    Usuario: <b>{data.email}</b>
                 </p>
             </div>
             <hr />
