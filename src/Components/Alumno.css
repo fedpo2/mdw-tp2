@@ -1,0 +1,15 @@
+.alumno{
+    padding: 1rem 1rem 1rem 1rem;
+}
+.b{
+    border:3px solid;
+    border-radius: 10px;
+}
+
+.b-rojo{
+    border-color: red;
+}
+
+.b-verde{
+    border-color: green;
+}
