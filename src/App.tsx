@@ -1,37 +1,41 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Alumno from './Components/Alumno';
-import { ObtenerUsuarios } from './services/servicioUsuario';
+import "./App.css";
+import { Link } from "react-router";
+import { AppRouter } from "./Router/AppRouter";
+import { Navbar } from "./Components/NavBar";
+import { useUsuario } from "./services/useUsuario";
+import { Seccion } from "./Components/Seccion";
+import type { PermissionLevel } from "./types/usuario";
 
 function App() {
-    const [loading, setLoading] = useState(true);
-    const [alumnos, setAlumnos] = useState<any[]>([]);
-
-    useEffect(() => {
-        async function cargarDatos() {
-            setLoading(true);
-            try {
-                const data = await ObtenerUsuarios();
-                setAlumnos(data);
-            } catch (error) {
-                console.error('Error al obtener usuarios:', error);
-            } finally {
-                setLoading(false);
+  const { usuario, setPermissionLevel } = useUsuario();
+  return (
+    <>
+      <Navbar>
+        <Seccion>
+          <Link to="/home">Home</Link>
+          {usuario?.permissionLevel.includes("ADMIN") && (
+            <Link to="/admin">Admin</Link>
+          )}
+          <Link to="/analytics">analytics</Link>
+          <Link to="/about">About</Link>
+        </Seccion>
+        <Seccion>
+          El permiso el usuario es:
+          <select
+            value={usuario?.permissionLevel[0] || "GUEST"}
+            onChange={(e) =>
+              setPermissionLevel(e.target.value as PermissionLevel)
             }
-        }
-
-        cargarDatos();
-    }, []);
-
-    if (loading) return <div>Cargando...</div>;
-
-    return (
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem', flexWrap: 'wrap', justifyContent: "center"}}>
-            {alumnos.map((x) => (
-                <Alumno key={x.id} data={x} />
-            ))}
-        </div>
-    );
+          >
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+            <option value="GUEST">GUEST</option>
+          </select>
+        </Seccion>
+      </Navbar>
+      <AppRouter />
+    </>
+  );
 }
 
 export default App;

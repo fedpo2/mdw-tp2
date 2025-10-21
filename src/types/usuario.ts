@@ -1,6 +1,9 @@
 export interface Usuario {
-    id: number,
-    name: string,
-    username: string,
-    email: string
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  permissionLevel: [PermissionLevel];
 }
+
+export type PermissionLevel = "ADMIN" | "USER" | "GUEST";
