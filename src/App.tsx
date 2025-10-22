@@ -33,7 +33,7 @@ function App() {
           </select>
         </Seccion>
       </Navbar>
-      <AppRouter />
+      <AppRouter usuario={usuario} />
     </>
   );
 }

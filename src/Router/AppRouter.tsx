@@ -6,11 +6,8 @@ import { Navigate } from "react-router";
 import { RutaProtegida } from "./RutaProtegida";
 import { ComponenteAdmin } from "../Components/ComponenteAdmin";
 import { Dashboard } from "../Components/Dashboard";
-import { useUsuario } from "../services/useUsuario";
 
-export function AppRouter() {
-  const { usuario } = useUsuario();
-
+export function AppRouter({usuario}: {usuario: Usuario}) {
   return (
     <Routes>
       <Route index element={<Dashboard />} />
