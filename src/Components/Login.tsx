@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react';
+import { useNavigate } from 'react-router';
 
 const Login = ({setUsuario}:any) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e:FormEvent) => {
         e.preventDefault();
@@ -20,10 +22,11 @@ const Login = ({setUsuario}:any) => {
                     permissionLevel: ["ADMIN"],
                 }
             );
+            navigate("/home");
         } catch (error) {
         } finally {
           //simulamos latencia
-          setTimeout(()=>setLoading(false), 1000)
+          setLoading(false);
     }
   };
 

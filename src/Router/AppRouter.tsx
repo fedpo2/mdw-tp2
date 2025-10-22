@@ -28,7 +28,7 @@ export function AppRouter({usuario, setUsuario}: prop) {
             estaPermitido={
               !!usuario && usuario.permissionLevel.includes("ADMIN")
             }
-            redirectTo="/login"
+            redirectTo="/home"
           >
             <ComponenteAdmin></ComponenteAdmin>
           </RutaProtegida>
