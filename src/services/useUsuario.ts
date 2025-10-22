@@ -15,7 +15,7 @@ export const useUsuario = () => {
   );
 
   function setPermissionLevel(arg: PermissionLevel) {
-    setUsuario({ ...usuario, permissionLevel: [arg] });
+      setUsuario({ ...usuario!, permissionLevel: [arg] });
   }
 
   return {

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useUsuario } from '../services/useUsuario';
+import { useState, type FormEvent } from 'react';
 
 const Login = ({setUsuario}:any) => {
 
@@ -7,7 +6,7 @@ const Login = ({setUsuario}:any) => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
