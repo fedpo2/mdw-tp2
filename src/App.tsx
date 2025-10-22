@@ -7,7 +7,7 @@ import { Seccion } from "./Components/Seccion";
 import type { PermissionLevel } from "./types/usuario";
 
 function App() {
-  const { usuario, setPermissionLevel } = useUsuario();
+  const { usuario, setPermissionLevel, setUsuario } = useUsuario();
   return (
     <>
       <Navbar>
@@ -16,7 +16,7 @@ function App() {
           {usuario?.permissionLevel.includes("ADMIN") && (
             <Link to="/admin">Admin</Link>
           )}
-          <Link to="/analytics">analytics</Link>
+          <Link to="/productos">productos</Link>
           <Link to="/about">About</Link>
         </Seccion>
         <Seccion>
@@ -33,7 +33,7 @@ function App() {
           </select>
         </Seccion>
       </Navbar>
-      <AppRouter usuario={usuario} />
+      <AppRouter usuario={usuario} setUsuario={setUsuario} />
     </>
   );
 }

@@ -6,15 +6,16 @@ import { Navigate } from "react-router";
 import { RutaProtegida } from "./RutaProtegida";
 import { ComponenteAdmin } from "../Components/ComponenteAdmin";
 import { Dashboard } from "../Components/Dashboard";
+import Login from "../Components/Login";
 
-export function AppRouter({usuario}: {usuario: Usuario}) {
+export function AppRouter({usuario, setUsuario}: {usuario: Usuario, setUsuario:any}) {
   return (
     <Routes>
-      <Route index element={<Dashboard />} />
-      <Route path="/home" element={<Dashboard />} />
-      <Route element={<RutaProtegida estaPermitido={!!usuario} />}>
+      <Route path="/login" element={<Login setUsuario={setUsuario} />} />
+      <Route element={<RutaProtegida estaPermitido={!!usuario} redirectTo="/login"/>}>
+        <Route path="/home" element={<Dashboard />} />
         <Route path="/about" element={<h1>About</h1>}></Route>
-        <Route path="/analytics" element={<h1>Estadisticas</h1>}></Route>
+        <Route path="/productos" element={<h1>Productos</h1>}></Route>
       </Route>
       <Route
         path="/admin"
@@ -23,13 +24,13 @@ export function AppRouter({usuario}: {usuario: Usuario}) {
             estaPermitido={
               !!usuario && usuario.permissionLevel.includes("ADMIN")
             }
-            redirectTo="/home"
+            redirectTo="/login"
           >
             <ComponenteAdmin></ComponenteAdmin>
           </RutaProtegida>
         }
       ></Route>
-      <Route path="/*" element={<Navigate to="/home" />} />
+      <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
 }
